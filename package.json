@@ -1,0 +1,15 @@
+{
+  "name": "repfinity-web-resct",
+  "version": "1.0.0",
+  "description": "Repfinity Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "groq-sdk": "^0.5.0",
+    "resend": "^3.4.0"
+  }
+}
