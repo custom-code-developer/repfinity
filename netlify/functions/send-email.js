@@ -6,7 +6,7 @@ const { Resend } = require('resend');
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // El dominio verificado en tu cuenta de Resend.
-const fromEmail = 'info@repfinity.app'; // Usamos un email genérico y profesional.
+const fromEmail = 'sales@repfinity.app'; // Usamos un email genérico y profesional.
 
 // Esta es la función serverless de Netlify.
 exports.handler = async function(event) {
