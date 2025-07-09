@@ -1,0 +1,11 @@
+# Configuración para el despliegue en Netlify
+[build]
+  # Directorio que Netlify desplegará. Para un sitio estático, es el directorio raíz.
+  publish = "."
+  # Directorio donde residirán nuestras funciones serverless (el asistente de IA).
+  functions = "netlify/functions"
+
+[functions]
+  # Especificamos la versión de Node.js para asegurar compatibilidad.
+  node_bundler = "esbuild"
+  node_version = "20"

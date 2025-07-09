@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Comparativo - Repfinity</title>
+    <meta name="description" content="Análisis comparativo detallado de los servicios de Repfinity frente a las alternativas tradicionales del mercado. Descubre las ventajas en precio, privacidad y rendimiento.">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --primary-color: #1e88e5;
+            --secondary-color: #2c2c2c;
+            --accent-color: #00dfb7;
+            --text-color: #e0e0e0;
+            --heading-color: #ffffff;
+            --dark-bg: #1a1a1a;
+            --card-bg: #252525;
+            --border-color: #444;
+            --text-muted-dark: #888;
+            --heading-font: 'Montserrat', sans-serif;
+            --body-font: 'Open Sans', sans-serif;
+            --success-color: #4caf50;
+            --danger-color: #f44336;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--body-font);
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--dark-bg);
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--heading-font);
+            color: var(--heading-color);
+            font-weight: 700;
+            margin-bottom: 0.8em;
+            line-height: 1.3;
+        }
+        h1 { font-size: 2.5rem; text-align: center; }
+        h2 { font-size: 2rem; margin-top: 2em; border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; margin-bottom: 1.5em;}
+        h3 { font-size: 1.5rem; color: var(--accent-color); margin-top: 2em; }
+        p { margin-bottom: 1.2em; }
+        a { color: var(--accent-color); text-decoration: none; transition: color 0.3s ease; }
+        a:hover, a:focus { color: var(--primary-color); }
+        .container {
+            width: 90%;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 40px 15px;
+        }
+        .main-header {
+            background-color: var(--card-bg);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+        .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .logo-header img { height: 50px; width: auto; }
+        .logo-header span {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--heading-color);
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-family: var(--heading-font);
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover { background-color: #00b398; transform: translateY(-2px); }
+        
+        .main-nav ul { display: flex; gap: 25px; margin: 0; padding: 0; list-style: none; }
+        .main-nav a { font-weight: 600; color: var(--text-color); font-family: var(--heading-font); padding: 5px 0; position: relative; text-decoration: none; }
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        .main-nav a:hover::after,
+        .main-nav a:focus::after { width: 100%; }
+        .main-nav a:focus { outline: none; }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .comparison-table th {
+            background-color: var(--card-bg);
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        .comparison-table .repfinity-row {
+            background-color: rgba(0, 223, 183, 0.1);
+            font-weight: bold;
+        }
+        .comparison-table .icon {
+            font-size: 1.2rem;
+            margin-right: 8px;
+        }
+        .icon-success { color: var(--success-color); }
+        .icon-danger { color: var(--danger-color); }
+
+        .value-analysis {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .value-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .value-card h4 {
+            color: var(--heading-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        .value-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .value-card li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        .value-card li::before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        .value-card.pros li::before {
+            content: '\f058'; /* check-circle */
+            color: var(--success-color);
+        }
+        .value-card.cons li::before {
+            content: '\f057'; /* times-circle */
+            color: var(--danger-color);
+        }
+
+        .verdict {
+            background-color: var(--card-bg);
+            border-left: 5px solid var(--accent-color);
+            padding: 25px;
+            margin-top: 40px;
+            border-radius: 0 8px 8px 0;
+        }
+        .verdict h3 { margin-top: 0; }
+
+        .main-footer {
+            background-color: #111;
+            color: var(--text-muted-dark);
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 2px solid var(--border-color);
+            margin-top: 50px;
+        }
+        .table-subtitle {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-muted-dark);
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .value-analysis { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo-header">
+                <img src="logo-repfinity.png" alt="Logo Repfinity">
+                <span>Repfinity</span>
+            </a>
+            <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+                <ul style="display: flex; gap: 25px; list-style: none;">
+                    <li><a href="index.html#servicios" data-translate-key="navServices">Servicios</a></li>
+                    <li><a href="index.html#portafolio" data-translate-key="navPortfolio">Portafolio</a></li>
+                    <li><a href="guias.html" data-translate-key="navGuides">Guías</a></li>
+                    <li><a href="index.html#precio" data-translate-key="navPricing">Planes</a></li>
+                </ul>
+            </nav>
+            <a href="index.html#contacto" class="cta-button" data-translate-key="navContact">Contacto</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 data-translate-key="compareTitle">Análisis Comparativo: ¿Por Qué Repfinity?</h1>
+
+            <section id="comparativa-herramienta">
+                <h2 data-translate-key="compareToolTitle">Herramienta de Reputación: Creada para Negocios Locales</h2>
+                
+                <h3 data-translate-key="comparePriceTitle">Comparación de Precios Anuales</h3>
+                <p class="table-subtitle" data-translate-key="toolPriceSubtitle">Precios de entrada de plataformas líderes, a menudo diseñadas para grandes empresas, no para el presupuesto de un negocio local.</p>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th data-translate-key="tableHeaderTool">Herramienta</th>
+                            <th data-translate-key="tableHeaderAnnualPrice">Precio Anual (USD)*</th>
+                            <th data-translate-key="tableHeaderDifference">Diferencia vs. Repfinity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="repfinity-row">
+                            <td><i class="fas fa-star icon icon-success"></i>Repfinity</td>
+                            <td>$240</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td data-translate-key="toolGradeUs">Grade.us (Plan Básico)</td>
+                            <td>$1,320</td>
+                            <td data-translate-key="toolGradeUsDiff">+450% más caro</td>
+                        </tr>
+                        <tr>
+                            <td data-translate-key="toolPodium">Podium (Plan Básico)</td>
+                            <td>$4,788</td>
+                            <td data-translate-key="toolPodiumDiff">+1,895% más caro</td>
+                        </tr>
+                        <tr>
+                            <td data-translate-key="toolBirdeye">Birdeye (Plan Básico)</td>
+                            <td>$3,588</td>
+                            <td data-translate-key="toolBirdeyeDiff">+1,395% más caro</td>
+                        </tr>
+                         <tr>
+                            <td data-translate-key="toolReputation">Reputation.com</td>
+                            <td data-translate-key="toolReputationPrice">$6,000 - $18,000+</td>
+                            <td data-translate-key="toolReputationDiff">+2,400% a 7,400% más caro</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 data-translate-key="comparePrivacyTitle">Comparación de Privacidad y Control de Datos</h3>
+                <div class="value-analysis">
+                    <div class="value-card pros">
+                        <h4 data-translate-key="privacyRepfinityTitle"><i class="fas fa-shield-alt icon"></i>Repfinity: Modelo Privado y Directo</h4>
+                        <ul>
+                            <li data-translate-key="privacyRepfinityLi1">Feedback 100% privado a tu email, sin intermediarios.</li>
+                            <li data-translate-key="privacyRepfinityLi2">Tus datos y los de tus clientes nunca son almacenados ni analizados.</li>
+                            <li data-translate-key="privacyRepfinityLi3">Control total y absoluto para el dueño del negocio.</li>
+                            <li data-translate-key="privacyRepfinityLi4">Simple, seguro y diseñado para proteger tu activo más valioso: tus clientes.</li>
+                        </ul>
+                    </div>
+                    <div class="value-card cons">
+                        <h4 data-translate-key="privacyCompetitorsTitle"><i class="fas fa-server icon"></i>Competencia: Modelo Centralizado</h4>
+                        <ul>
+                            <li data-translate-key="privacyCompetitorsLi1">Dashboards corporativos con acceso a toda tu información.</li>
+                            <li data-translate-key="privacyCompetitorsLi2">Servidores centralizados que almacenan datos de tus clientes.</li>
+                            <li data-translate-key="privacyCompetitorsLi3">Riesgo de brechas de seguridad y uso comercial de tus datos.</li>
+                            <li data-translate-key="privacyCompetitorsLi4">Dependencia total de una plataforma externa que controla tu información.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="verdict">
+                    <h3 data-translate-key="verdictToolTitle">Veredicto: Herramienta de Reputación</h3>
+                    <p data-translate-key="verdictToolText">Para el dueño de un negocio local, profesional o PYME que valora la <strong>privacidad, la simplicidad y un precio justo</strong>, Repfinity es la opción lógica y superior. Ofrece la funcionalidad esencial para crecer sin los costos exorbitantes y los riesgos de privacidad de las plataformas corporativas.</p>
+                </div>
+            </section>
+
+            <section id="comparativa-web">
+                <h2 data-translate-key="compareWebTitle">Servicio Web: La Solución Inteligente vs. Alternativas Complejas</h2>
+
+                <h3 data-translate-key="compareGeneralTitle">Comparación General</h3>
+                <p class="table-subtitle" data-translate-key="webPriceSubtitle">Costos y tiempos promedio para un sitio web profesional. Las alternativas ocultan costos de tiempo, mantenimiento y vulnerabilidades.</p>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th data-translate-key="tableHeaderFeature">Característica</th>
+                            <th><i class="fas fa-star icon icon-success"></i>Repfinity</th>
+                            <th data-translate-key="tableHeaderWordPress">WordPress (Freelance/Agencia)</th>
+                            <th data-translate-key="tableHeaderBuilders">Constructores Web (Wix, etc.)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-translate-key="featurePrice"><strong>Precio Total (1er Año)</strong></td>
+                            <td class="repfinity-row">$150 USD</td>
+                            <td data-translate-key="priceWordPress">$850 - $3,000+ **</td>
+                            <td data-translate-key="priceBuilders">$348+ ***</td>
+                        </tr>
+                        <tr>
+                            <td data-translate-key="featureTime"><strong>Tiempo de Desarrollo</strong></td>
+                            <td class="repfinity-row" data-translate-key="timeRepfinity">5-7 días hábiles</td>
+                            <td data-translate-key="timeWordPress">4-12 semanas</td>
+                            <td data-translate-key="timeBuilders">Semanas (depende 100% de ti)</td>
+                        </tr>
+                        <tr>
+                            <td data-translate-key="featureCode"><strong>Código Fuente</strong></td>
+                            <td class="repfinity-row" data-translate-key="codeRepfinity">HTML, CSS, JS Nativo</td>
+                            <td data-translate-key="codeWordPress">PHP, Múltiples Plugins</td>
+                            <td data-translate-key="codeBuilders">Código propietario, limitado</td>
+                        </tr>
+                        <tr>
+                            <td data-translate-key="featurePerformance"><strong>Velocidad y Rendimiento</strong></td>
+                            <td class="repfinity-row"><i class="fas fa-check-circle icon icon-success"></i><span data-translate-key="performanceRepfinity">Excelente</span></td>
+                            <td><i class="fas fa-exclamation-circle icon icon-danger"></i><span data-translate-key="performanceWordPress">Lento por plugins</span></td>
+                            <td><i class="fas fa-exclamation-circle icon icon-danger"></i><span data-translate-key="performanceBuilders">Moderado</span></td>
+                        </tr>
+                        <tr>
+                            <td data-translate-key="featureSecurity"><strong>Seguridad</strong></td>
+                            <td class="repfinity-row"><i class="fas fa-check-circle icon icon-success"></i><span data-translate-key="securityRepfinity">Alta (sin plugins)</span></td>
+                            <td><i class="fas fa-exclamation-circle icon icon-danger"></i><span data-translate-key="securityWordPress">Vulnerable</span></td>
+                            <td><i class="fas fa-exclamation-circle icon icon-danger"></i><span data-translate-key="securityBuilders">Media</span></td>
+                        </tr>
+                        <tr>
+                            <td data-translate-key="featureMaintenance"><strong>Mantenimiento Requerido</strong></td>
+                            <td class="repfinity-row"><i class="fas fa-check-circle icon icon-success"></i><span data-translate-key="maintenanceRepfinity">Ninguno por tu parte</span></td>
+                            <td><i class="fas fa-exclamation-circle icon icon-danger"></i><span data-translate-key="maintenanceWordPress">Constante y obligatorio</span></td>
+                            <td><i class="fas fa-exclamation-circle icon icon-danger"></i><span data-translate-key="maintenanceBuilders">Ninguno</span></td>
+                        </tr>
+                         <tr>
+                            <td data-translate-key="featureGuarantee"><strong>Garantía de Satisfacción</strong></td>
+                            <td class="repfinity-row"><i class="fas fa-check-circle icon icon-success"></i><span data-translate-key="guaranteeRepfinity">7 días incondicional</span></td>
+                            <td><i class="fas fa-times-circle icon icon-danger"></i><span data-translate-key="guaranteeWordPress">Rara vez ofrecida</span></td>
+                            <td><i class="fas fa-times-circle icon icon-danger"></i><span data-translate-key="guaranteeBuilders">Limitada a la plataforma</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                 <div class="verdict">
+                    <h3 data-translate-key="verdictWebTitle">Veredicto: Servicio Web</h3>
+                    <p data-translate-key="verdictWebText">Para el pequeño negocio o profesional que necesita una presencia online <strong>rápida, segura y sin las jaquecas técnicas</strong>, el servicio de Repfinity es la decisión inteligente. Eliminamos la complejidad, los costos ocultos y las vulnerabilidades de WordPress, entregando un sitio de alto rendimiento en tiempo récord, permitiéndote enfocarte en lo que realmente importa: tu negocio.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p data-translate-key="footerCopyright">© <span id="current-year">2025</span> Repfinity. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+    <script>
+        const translations = {
+            'es': {
+                'navServices': 'Servicios',
+                'navPortfolio': 'Portafolio',
+                'navGuides': 'Guías',
+                'navPricing': 'Planes',
+                'navContact': 'Contacto',
+                'compareTitle': 'Análisis Comparativo: ¿Por Qué Repfinity?',
+                'compareToolTitle': 'Herramienta de Reputación: Creada para Negocios Locales',
+                'comparePriceTitle': 'Comparación de Precios Anuales',
+                'toolPriceSubtitle': 'Precios de entrada de plataformas líderes, a menudo diseñadas para grandes empresas, no para el presupuesto de un negocio local.',
+                'tableHeaderTool': 'Herramienta',
+                'tableHeaderAnnualPrice': 'Precio Anual (USD)*',
+                'tableHeaderDifference': 'Diferencia vs. Repfinity',
+                'toolGradeUs': 'Grade.us (Plan Básico)',
+                'toolGradeUsDiff': '+450% más caro',
+                'toolPodium': 'Podium (Plan Básico)',
+                'toolPodiumDiff': '+1,895% más caro',
+                'toolBirdeye': 'Birdeye (Plan Básico)',
+                'toolBirdeyeDiff': '+1,395% más caro',
+                'toolReputation': 'Reputation.com',
+                'toolReputationPrice': '$6,000 - $18,000+',
+                'toolReputationDiff': '+2,400% a 7,400% más caro',
+                'comparePrivacyTitle': 'Comparación de Privacidad y Control de Datos',
+                'privacyRepfinityTitle': '<i class="fas fa-shield-alt icon"></i>Repfinity: Modelo Privado y Directo',
+                'privacyRepfinityLi1': 'Feedback 100% privado a tu email, sin intermediarios.',
+                'privacyRepfinityLi2': 'Tus datos y los de tus clientes nunca son almacenados ni analizados.',
+                'privacyRepfinityLi3': 'Control total y absoluto para el dueño del negocio.',
+                'privacyRepfinityLi4': 'Simple, seguro y diseñado para proteger tu activo más valioso: tus clientes.',
+                'privacyCompetitorsTitle': '<i class="fas fa-server icon"></i>Competencia: Modelo Centralizado',
+                'privacyCompetitorsLi1': 'Dashboards corporativos con acceso a toda tu información.',
+                'privacyCompetitorsLi2': 'Servidores centralizados que almacenan datos de tus clientes.',
+                'privacyCompetitorsLi3': 'Riesgo de brechas de seguridad y uso comercial de tus datos.',
+                'privacyCompetitorsLi4': 'Dependencia total de una plataforma externa que controla tu información.',
+                'verdictToolTitle': 'Veredicto: Herramienta de Reputación',
+                'verdictToolText': 'Para el dueño de un negocio local, profesional o PYME que valora la <strong>privacidad, la simplicidad y un precio justo</strong>, Repfinity es la opción lógica y superior. Ofrece la funcionalidad esencial para crecer sin los costos exorbitantes y los riesgos de privacidad de las plataformas corporativas.',
+                'compareWebTitle': 'Servicio Web: La Solución Inteligente vs. Alternativas Complejas',
+                'webPriceSubtitle': 'Costos y tiempos promedio para un sitio web profesional. Las alternativas ocultan costos de tiempo, mantenimiento y vulnerabilidades.',
+                'compareGeneralTitle': 'Comparación General',
+                'tableHeaderFeature': 'Característica',
+                'tableHeaderWordPress': 'WordPress (Freelance/Agencia)',
+                'tableHeaderBuilders': 'Constructores Web (Wix, etc.)',
+                'featurePrice': '<strong>Precio Total (1er Año)</strong>',
+                'priceWordPress': '$850 - $3,000+ **',
+                'priceBuilders': '$348+ ***',
+                'featureTime': '<strong>Tiempo de Desarrollo</strong>',
+                'timeRepfinity': '5-7 días hábiles',
+                'timeWordPress': '4-12 semanas',
+                'timeBuilders': 'Semanas (depende 100% de ti)',
+                'featureCode': '<strong>Código Fuente</strong>',
+                'codeRepfinity': 'HTML, CSS, JS Nativo',
+                'codeWordPress': 'PHP, Múltiples Plugins',
+                'codeBuilders': 'Código propietario, limitado',
+                'featurePerformance': '<strong>Velocidad y Rendimiento</strong>',
+                'performanceRepfinity': 'Excelente',
+                'performanceWordPress': 'Lento por plugins',
+                'performanceBuilders': 'Moderado',
+                'featureSecurity': '<strong>Seguridad</strong>',
+                'securityRepfinity': 'Alta (sin plugins)',
+                'securityWordPress': 'Vulnerable',
+                'securityBuilders': 'Media',
+                'featureMaintenance': '<strong>Mantenimiento Requerido</strong>',
+                'maintenanceRepfinity': 'Ninguno por tu parte',
+                'maintenanceWordPress': 'Constante y obligatorio',
+                'maintenanceBuilders': 'Ninguno',
+                'featureGuarantee': '<strong>Garantía de Satisfacción</strong>',
+                'guaranteeRepfinity': '7 días incondicional',
+                'guaranteeWordPress': 'Rara vez ofrecida',
+                'guaranteeBuilders': 'Limitada a la plataforma',
+                'verdictWebTitle': 'Veredicto: Servicio Web',
+                'verdictWebText': 'Para el pequeño negocio o profesional que necesita una presencia online <strong>rápida, segura y sin las jaquecas técnicas</strong>, el servicio de Repfinity es la decisión inteligente. Eliminamos la complejidad, los costos ocultos y las vulnerabilidades de WordPress, entregando un sitio de alto rendimiento en tiempo récord, permitiéndote enfocarte en lo que realmente importa: tu negocio.',
+                'footerCopyright': '© <span id="current-year">2025</span> Repfinity. Todos los derechos reservados.'
+            },
+            'en': {
+                'navServices': 'Services',
+                'navPortfolio': 'Portfolio',
+                'navGuides': 'Guides',
+                'navPricing': 'Plans',
+                'navContact': 'Contact',
+                'compareTitle': 'Comparative Analysis: Why Repfinity?',
+                'compareToolTitle': 'Reputation Tool: Built for Local Businesses',
+                'comparePriceTitle': 'Annual Price Comparison',
+                'toolPriceSubtitle': 'Entry-level prices from leading platforms, often designed for large corporations, not a local business\'s budget.',
+                'tableHeaderTool': 'Tool',
+                'tableHeaderAnnualPrice': 'Annual Price (USD)*',
+                'tableHeaderDifference': 'Difference vs. Repfinity',
+                'toolGradeUs': 'Grade.us (Basic Plan)',
+                'toolGradeUsDiff': '+450% more expensive',
+                'toolPodium': 'Podium (Basic Plan)',
+                'toolPodiumDiff': '+1,895% more expensive',
+                'toolBirdeye': 'Birdeye (Basic Plan)',
+                'toolBirdeyeDiff': '+1,395% more expensive',
+                'toolReputation': 'Reputation.com',
+                'toolReputationPrice': '$6,000 - $18,000+',
+                'toolReputationDiff': '+2,400% to 7,400% more expensive',
+                'comparePrivacyTitle': 'Privacy and Data Control Comparison',
+                'privacyRepfinityTitle': '<i class="fas fa-shield-alt icon"></i>Repfinity: Private & Direct Model',
+                'privacyRepfinityLi1': '100% private feedback to your email, no intermediaries.',
+                'privacyRepfinityLi2': 'Your data and your customers\' data are never stored or analyzed.',
+                'privacyRepfinityLi3': 'Full and absolute control for the business owner.',
+                'privacyRepfinityLi4': 'Simple, secure, and designed to protect your most valuable asset: your customers.',
+                'privacyCompetitorsTitle': '<i class="fas fa-server icon"></i>Competitors: Centralized Model',
+                'privacyCompetitorsLi1': 'Corporate dashboards with access to all your information.',
+                'privacyCompetitorsLi2': 'Centralized servers storing your customers\' data.',
+                'privacyCompetitorsLi3': 'Risk of security breaches and commercial use of your data.',
+                'privacyCompetitorsLi4': 'Total dependence on an external platform that controls your information.',
+                'verdictToolTitle': 'Verdict: Reputation Tool',
+                'verdictToolText': 'For the local business owner, professional, or SMB who values <strong>privacy, simplicity, and a fair price</strong>, Repfinity is the logical and superior choice. It offers the essential functionality to grow without the exorbitant costs and privacy risks of corporate platforms.',
+                'compareWebTitle': 'Web Service: The Smart Solution vs. Complex Alternatives',
+                'webPriceSubtitle': 'Average costs and times for a professional website. Alternatives hide costs in time, maintenance, and vulnerabilities.',
+                'compareGeneralTitle': 'General Comparison',
+                'tableHeaderFeature': 'Feature',
+                'tableHeaderWordPress': 'Traditional WordPress',
+                'tableHeaderBuilders': 'Web Builders (Wix, etc.)',
+                'featurePrice': '<strong>Total Price (1st Year)</strong>',
+                'priceWordPress': '$850 - $3,000+ **',
+                'priceBuilders': '$348+ ***',
+                'featureTime': '<strong>Development Time</strong>',
+                'timeRepfinity': '5-7 business days',
+                'timeWordPress': '4-12 weeks',
+                'timeBuilders': 'Weeks (100% dependent on you)',
+                'featureCode': '<strong>Source Code</strong>',
+                'codeRepfinity': 'Native HTML, CSS, JS',
+                'codeWordPress': 'PHP, Multiple Plugins',
+                'codeBuilders': 'Proprietary, limited code',
+                'featurePerformance': '<strong>Speed & Performance</strong>',
+                'performanceRepfinity': 'Excellent',
+                'performanceWordPress': 'Slow due to plugins',
+                'performanceBuilders': 'Moderate',
+                'featureSecurity': '<strong>Security</strong>',
+                'securityRepfinity': 'High (no plugins)',
+                'securityWordPress': 'Vulnerable',
+                'securityBuilders': 'Medium',
+                'featureMaintenance': '<strong>Maintenance Required</strong>',
+                'maintenanceRepfinity': 'None on your part',
+                'maintenanceWordPress': 'Constant and mandatory',
+                'maintenanceBuilders': 'None',
+                'featureGuarantee': '<strong>Satisfaction Guarantee</strong>',
+                'guaranteeRepfinity': '7-day unconditional',
+                'guaranteeWordPress': 'Rarely offered',
+                'guaranteeBuilders': 'Limited to the platform',
+                'verdictWebTitle': 'Verdict: Web Service',
+                'verdictWebText': 'For the small business or professional who needs a <strong>fast, secure, and hassle-free online presence</strong>, Repfinity\'s service is the smart decision. We eliminate the complexity, hidden costs, and vulnerabilities of WordPress, delivering a high-performance site in record time, allowing you to focus on what truly matters: your business.',
+                'footerCopyright': '© <span id="current-year">2025</span> Repfinity. All rights reserved.'
+            },
+            'pt': {
+                'navServices': 'Serviços',
+                'navPortfolio': 'Portfólio',
+                'navGuides': 'Guias',
+                'navPricing': 'Planos',
+                'navContact': 'Contato',
+                'compareTitle': 'Análise Comparativa: Por Que Repfinity?',
+                'compareToolTitle': 'Ferramenta de Reputação: Criada para Negócios Locais',
+                'comparePriceTitle': 'Comparação de Preços Anuais',
+                'toolPriceSubtitle': 'Preços de entrada de plataformas líderes, frequentemente desenhadas para grandes corporações, não para o orçamento de um negócio local.',
+                'tableHeaderTool': 'Ferramenta',
+                'tableHeaderAnnualPrice': 'Preço Anual (USD)*',
+                'tableHeaderDifference': 'Diferença vs. Repfinity',
+                'toolGradeUs': 'Grade.us (Plano Básico)',
+                'toolGradeUsDiff': '+450% mais caro',
+                'toolPodium': 'Podium (Plano Básico)',
+                'toolPodiumDiff': '+1.895% mais caro',
+                'toolBirdeye': 'Birdeye (Plano Básico)',
+                'toolBirdeyeDiff': '+1.395% mais caro',
+                'toolReputation': 'Reputation.com',
+                'toolReputationPrice': '$6.000 - $18.000+',
+                'toolReputationDiff': '+2.400% a 7.400% mais caro',
+                'comparePrivacyTitle': 'Comparação de Privacidade e Controle de Dados',
+                'privacyRepfinityTitle': '<i class="fas fa-shield-alt icon"></i>Repfinity: Modelo Privado e Direto',
+                'privacyRepfinityLi1': 'Feedback 100% privado para seu e-mail, sem intermediários.',
+                'privacyRepfinityLi2': 'Seus dados e os de seus clientes nunca são armazenados nem analisados.',
+                'privacyRepfinityLi3': 'Controle total e absoluto para o dono do negócio.',
+                'privacyRepfinityLi4': 'Simples, seguro e projetado para proteger seu ativo mais valioso: seus clientes.',
+                'privacyCompetitorsTitle': '<i class="fas fa-server icon"></i>Concorrência: Modelo Centralizado',
+                'privacyCompetitorsLi1': 'Painéis corporativos com acesso a todas as suas informações.',
+                'privacyCompetitorsLi2': 'Servidores centralizados que armazenam dados de seus clientes.',
+                'privacyCompetitorsLi3': 'Risco de violações de segurança e uso comercial de seus dados.',
+                'privacyCompetitorsLi4': 'Dependência total de uma plataforma externa que controla suas informações.',
+                'verdictToolTitle': 'Veredito: Ferramenta de Reputação',
+                'verdictToolText': 'Para o dono de um negócio local, profissional ou PME que valoriza a <strong>privacidade, a simplicidade e um preço justo</strong>, a Repfinity é a opção lógica e superior. Oferece a funcionalidade essencial para crescer sem os custos exorbitantes e os riscos de privacidade das plataformas corporativas.',
+                'compareWebTitle': 'Serviço Web: A Solução Inteligente vs. Alternativas Complexas',
+                'webPriceSubtitle': 'Custos e tempos médios para um site profissional. As alternativas escondem custos de tempo, manutenção e vulnerabilidades.',
+                'compareGeneralTitle': 'Comparação Geral',
+                'tableHeaderFeature': 'Característica',
+                'tableHeaderWordPress': 'WordPress (Freelance/Agência)',
+                'tableHeaderBuilders': 'Construtores de Sites (Wix, etc.)',
+                'featurePrice': '<strong>Preço Total (1º Ano)</strong>',
+                'priceWordPress': '$850 - $3.000+ **',
+                'priceBuilders': '$348+ ***',
+                'featureTime': '<strong>Tempo de Desenvolvimento</strong>',
+                'timeRepfinity': '5-7 dias úteis',
+                'timeWordPress': '4-12 semanas',
+                'timeBuilders': 'Semanas (depende 100% de você)',
+                'featureCode': '<strong>Código Fonte</strong>',
+                'codeRepfinity': 'HTML, CSS, JS Nativo',
+                'codeWordPress': 'PHP, Múltiplos Plugins',
+                'codeBuilders': 'Código proprietário, limitado',
+                'featurePerformance': '<strong>Velocidade e Desempenho</strong>',
+                'performanceRepfinity': 'Excelente',
+                'performanceWordPress': 'Lento por plugins',
+                'performanceBuilders': 'Moderado',
+                'featureSecurity': '<strong>Segurança</strong>',
+                'securityRepfinity': 'Alta (sem plugins)',
+                'securityWordPress': 'Vulnerável',
+                'securityBuilders': 'Média',
+                'featureMaintenance': '<strong>Manutenção Necessária</strong>',
+                'maintenanceRepfinity': 'Nenhuma da sua parte',
+                'maintenanceWordPress': 'Constante e obrigatória',
+                'maintenanceBuilders': 'Nenhuma',
+                'featureGuarantee': '<strong>Garantia de Satisfação</strong>',
+                'guaranteeRepfinity': '7 dias incondicional',
+                'guaranteeWordPress': 'Raramente oferecida',
+                'guaranteeBuilders': 'Limitada à plataforma',
+                'verdictWebTitle': 'Veredito: Serviço Web',
+                'verdictWebText': 'Para a pequena empresa ou profissional que precisa de una presencia online <strong>rápida, segura y sin las dores de cabeza técnicas</strong>, el servicio de Repfinity es la decisión inteligente. Eliminamos la complejidad, los costos ocultos y las vulnerabilidades del WordPress, entregando un sitio de alto rendimiento en tiempo record, permitiendo que usted se concentre en lo que realmente importa: su negocio.',
+                'footerCopyright': '© <span id="current-year">2025</span> Repfinity. Todos los derechos reservados.'
+            }
+        };
+
+        function setLanguage(lang) {
+            const htmlEl = document.documentElement;
+            const targetLang = translations[lang] ? lang : 'es';
+            document.querySelectorAll('[data-translate-key]').forEach(element => {
+                const key = element.getAttribute('data-translate-key');
+                let text = translations[targetLang] ? translations[targetLang][key] : null;
+                if (!text && targetLang !== 'es' && translations['es']) {
+                    text = translations['es'][key];
+                }
+                if (text !== null && typeof text !== 'undefined') {
+                    element.innerHTML = text;
+                }
+            });
+            htmlEl.lang = targetLang;
+            localStorage.setItem('repfinityLang', targetLang);
+            document.title = getPageTitle(targetLang);
+        }
+
+        function getPageTitle(lang) {
+             const titles = {
+                 'en': 'Comparative Analysis - Repfinity',
+                 'pt': 'Análise Comparativa - Repfinity',
+                 'es': 'Análisis Comparativo - Repfinity'
+             };
+             return titles[lang] || titles['es']; 
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('repfinityLang');
+            const browserLang = navigator.language.split('-')[0]; 
+            const supportedLangs = Object.keys(translations);
+            let initialLang = 'es';
+            if (savedLang && supportedLangs.includes(savedLang)) {
+                initialLang = savedLang;
+            } else if (browserLang && supportedLangs.includes(browserLang)) {
+                initialLang = browserLang;
+            }
+            setLanguage(initialLang);
+        });
+    </script>
+
+</body>
+</html>
