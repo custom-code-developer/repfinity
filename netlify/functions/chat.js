@@ -7,12 +7,6 @@ const groq = new Groq({
     apiKey: process.env.GROQ_API_KEY,
 });
 
-const Groq = require('groq-sdk');
-
-const groq = new Groq({
-    apiKey: process.env.GROQ_API_KEY,
-});
-
 // --- CEREBRO ÚNICO Y EFICIENTE DE ANA ---
 // Gracias a tu prueba, sabemos que el modelo puede manejar múltiples idiomas.
 // Le damos un prompt base en español y una instrucción clave.
@@ -80,4 +74,3 @@ exports.handler = async function(event) {
         };
     }
 };
-
