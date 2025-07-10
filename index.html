@@ -404,6 +404,8 @@
             border-radius: 20px;
             font-family: var(--body-font);
             font-size: 1rem;
+            -webkit-user-select: text; /* Permite la selección de texto en iOS */
+            user-select: text;
         }
         #chat-input:focus {
             outline: 1px solid var(--accent-color);
@@ -437,12 +439,13 @@
             #beneficios ul { columns: 1; }
         }
 
-        /* Media query para móvil en horizontal */
+        /* Media query para móvil en horizontal - CORRECCIÓN DEFINITIVA */
         @media (max-width: 992px) and (orientation: landscape) {
             .ai-chat-window {
-                width: 60vw;
-                height: 80vh;
-                max-height: 400px; 
+                width: 65vw;
+                max-width: 500px;
+                height: calc(100vh - 40px); /* Usar vh para altura y dejar espacio */
+                max-height: 90vh; 
                 bottom: 20px;
                 right: 20px;
             }
@@ -501,7 +504,7 @@
             .pricing-container { grid-template-columns: 1fr; }
             .plan-card { max-width: 400px; margin: 0 auto; }
         }
-        @media (max-width: 576px) {
+        @media (max-width: 576px) and (orientation: portrait) {
             body { font-size: 15px; }
             h1 { font-size: 1.8rem; }
             h2, .section-title { font-size: 1.6rem; }
@@ -509,11 +512,12 @@
             .contact-methods { flex-direction: column; gap: 30px; }
             .cookie-consent-banner { flex-direction: column; text-align: center; left: 15px; right: 90px; bottom: 20px; width: auto; }
             
-            /* Ajustes del chat para móviles pequeños */
+            /* Ajustes del chat para móviles pequeños en vertical */
             .ai-chat-window {
                 right: 10px;
                 bottom: 80px;
                 width: calc(100vw - 20px);
+                height: 65vh;
             }
             .ai-assistant-bubble {
                 right: 10px;
@@ -932,7 +936,7 @@
                 termsSection7Item3: "Nuestra responsabilidad total, en cualquier caso, se limitará al monto que hayas pagado por los servicios durante los últimos seis (6) meses anteriores al evento que dio lugar a la reclamación.",
                 termsSection8Title: "8. Terminación", termsSection8Text: "Podemos suspender o terminar tu acceso a los servicios si incumples estos Términos de Uso. Puedes dejar de usar los servicios en cualquier momento, pero no se realizarán reembolsos por períodos no utilizados.",
                 termsSection9Title: "9. Ley Aplicable", termsSection9Text: "Estos Términos se regirán e interpretarán de acuerdo con las leyes de la República Argentina, sin dar efecto a ningún principio de conflicto de leyes.",
-                termsSection10Title: "10. Cambios a los Términos", termsSection10Text: "Nos reservamos el derecho de modificar estos Términos en cualquier momento. Publicaremos los cambios en esta página y actualizaremos la fecha de \"Última actualización\". El uso continuado de los servicios después de los cambios constituye tu aceptación de los nuevos términos.",
+                termsSection10Title: "10. Cambios a los Términos", termsSection10Text: "Nos reservamos el derecho de modificar estos Términos a cualquier momento. Publicaremos los cambios en esta página y actualizaremos la fecha de \"Última actualización\". El uso continuado de los servicios después de los cambios constituye tu aceptación de los nuevos términos.",
                 termsSection11Title: "11. Contáctanos", termsSection11Text: "Si tienes preguntas sobre estos Términos de Uso, por favor contáctanos en: <a href=\"mailto:sales@repfinity.app\">sales@repfinity.app</a>.",
             },
             en: {
