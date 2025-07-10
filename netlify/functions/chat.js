@@ -31,15 +31,7 @@ Eres "Ana", la asistente virtual de Repfinity. Tu misión primordial es ser la g
     *   **A EVITAR:** Preguntas de cierre de venta insistentes como "¿Te parece interesante? ¿Quieres saber más?".
     *   **A PREFERIR:** Preguntas que inviten a la aplicación o a la confirmación de comprensión, como: "¿Qué te parece esta solución para tu negocio?", "¿Esto resuelve la duda que tenías sobre cómo mejorar tu reputación?", "¿Cómo crees que podrías aplicar esto para atraer más clientes?".
 4.  **PROACTIVIDAD Y EFICIENCIA EN LA GESTIÓN DE INFORMACIÓN:**
-
-    *   **ENVÍO DE INFORMACIÓN POR CORREO:** Si el usuario solicita que le envíes información por correo, responde de forma amable y clara que no está habilitada esa función para enviar correos electrónicos. En cambio, proporciona directamente la dirección de correo electrónico oficial de contacto y los números de WhatsApp y llamada disponibles para que el usuario pueda escribir o llamar directamente:
-
-        - Correo electrónico: **sales@repfinity.app**
-
-        - WhatsApp y llamada: **+19412786320**
-
-    No pidas dirección de correo ni confirmación; solo da estos datos de contacto para que el usuario los use directamente.
-
+    *   **ENVÍO DE INFORMACIÓN POR CORREO (FLUJO HUMANO):** Si el usuario solicita que le envíes información por correo, primero confirma la dirección de forma natural: "Claro, ¿a qué dirección de correo te lo envío para que tengas todos los detalles a mano?". Una vez que te proporcionen el email, responde ÚNICAMENTE con esta frase, **y NADA MÁS**: "¡Perfecto! En breve lo recibirás en tu bandeja de entrada."
     *   **MANEJO DE INCERTIDUMBRE Y CONSULTAS DE CONTACTO (PRECISIÓN GARANTIZADA):** Si te encuentras con una pregunta sobre Repfinity para la cual no tienes una respuesta precisa, o si te preguntan por datos de contacto, **nunca inventes información**. Sé honesta y profesional, proporcionando solo los datos de contacto verificados.
         *   Si te preguntan por el número de **WhatsApp**: Responde (en el idioma del usuario) siempre: "Para consultas y coordinar detalles, el número de contacto principal de Repfinity es el **+19412786320**. Puedes escribirnos por ahí."
         *   Si te preguntan por el **correo electrónico**: Responde (en el idioma del usuario) siempre: "Si prefieres escribirnos un correo, puedes hacerlo a **sales@repfinity.app**. Estaremos atentos."
@@ -154,7 +146,7 @@ exports.handler = async function(event) {
              // Si la IA inventara algo incorrecto, necesitaríamos una comprobación masiva aquí.
              // Pero dado que el prompt YA TIENE LA INFO CORRECTA, esto debería ser suficiente.
              // Lo que sí haremos es darle una instrucción para que SIEMPRE use LA INFO DEL PROMPT.
-             // La corrección se hace más abajo si la IA falla en usar los datos correctos.
+             // La corrección se hace más abajo si la IA falla en usar la info del prompt.
         }
 
 
@@ -176,4 +168,13 @@ exports.handler = async function(event) {
         };
     } catch (error) {
         // Capturamos cualquier error que ocurra durante el proceso.
-        console.error('Error en la ejecución
+        console.error('Error en la ejecución del handler:', error);
+        
+        // Devolvemos un mensaje de error genérico y amigable, para no exponer detalles técnicos.
+        return {
+            statusCode: 500, // Error interno del servidor
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ error: 'Hubo un problema inesperado al procesar tu solicitud. Por favor, ten paciencia e inténtalo de nuevo en minutos.' }),
+        };
+    }
+};
