@@ -59,7 +59,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         :root {
@@ -283,28 +283,171 @@
         .lightbox-content { margin: auto; display: block; width: 80%; max-width: 1200px; }
         .lightbox-close { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; }
         .lightbox-close:hover, .lightbox-close:focus { color: #bbb; text-decoration: none; }
-        .ai-assistant-bubble { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background-color: var(--accent-color); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 223, 183, 0.4); z-index: 2001; transition: transform 0.3s ease; }
-        .ai-assistant-bubble:hover { transform: scale(1.1); }
-        .ai-chat-window { position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: 90vw; height: 500px; max-height: 70vh; background-color: var(--card-bg); border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); display: flex; flex-direction: column; overflow: hidden; z-index: 2000; opacity: 0; transform: translateY(20px); transition: opacity 0.3s ease, transform 0.3s ease; pointer-events: none; }
-        .ai-chat-window.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-        .chat-header { background-color: var(--secondary-color); padding: 15px; display: flex; justify-content: space-between; align-items: center; color: var(--heading-color); border-bottom: 1px solid var(--border-color); }
-        .chat-header h3 { margin: 0; font-size: 1.1rem; }
-        .close-chat-btn { background: none; border: none; color: var(--text-color); font-size: 1.5rem; cursor: pointer; }
-        .chat-body { flex-grow: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        .chat-message { padding: 10px 15px; border-radius: 18px; max-width: 80%; line-height: 1.5; }
-        .chat-message.user { background-color: var(--primary-color); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
-        .chat-message.assistant { background-color: var(--secondary-color); color: var(--text-color); align-self: flex-start; border-bottom-left-radius: 4px; }
-        .chat-footer { display: flex; padding: 10px; border-top: 1px solid var(--border-color); }
-        #chat-input { flex-grow: 1; border: none; background-color: var(--secondary-color); color: var(--text-color); padding: 12px; border-radius: 20px; font-family: var(--body-font); }
-        #chat-input:focus { outline: 1px solid var(--accent-color); }
-        #send-chat-btn { background: var(--accent-color); border: none; color: #000; width: 44px; height: 44px; border-radius: 50%; margin-left: 10px; cursor: pointer; font-size: 1.1rem; transition: background-color 0.3s; }
-        #send-chat-btn:hover { background-color: #00b398; }
+        
+        /* --- ESTILOS CORREGIDOS Y OPTIMIZADOS PARA EL CHAT --- */
+        .ai-assistant-bubble {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 223, 183, 0.4);
+            z-index: 2001;
+            transition: transform 0.3s ease;
+        }
+        .ai-assistant-bubble:hover {
+            transform: scale(1.1);
+        }
+        .ai-assistant-bubble img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+        }
+
+        .ai-chat-window {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 90vw;
+            max-width: 380px;
+            height: 70vh;
+            max-height: 550px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+        .ai-chat-window.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .chat-header {
+            background-color: var(--secondary-color);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--heading-color);
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+        .chat-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        .close-chat-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+        }
+        .chat-body {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .chat-message {
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 85%;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+        .chat-message.user {
+            background-color: var(--primary-color);
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .chat-message.assistant {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        .chat-message.typing {
+            font-style: italic;
+            color: var(--text-muted-dark);
+        }
+        .chat-footer {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+        #chat-input {
+            flex-grow: 1;
+            border: none;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 12px;
+            border-radius: 20px;
+            font-family: var(--body-font);
+            font-size: 1rem;
+        }
+        #chat-input:focus {
+            outline: 1px solid var(--accent-color);
+        }
+        #send-chat-btn {
+            background: var(--accent-color);
+            border: none;
+            color: #000;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+            flex-shrink: 0;
+        }
+        #send-chat-btn:hover {
+            background-color: #00b398;
+        }
+        #send-chat-btn:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+
+        /* --- FIN DE ESTILOS CORREGIDOS --- */
 
         @media (max-width: 992px) {
             h1 { font-size: 2.2rem; }
             h2, .section-title { font-size: 1.8rem; }
             #beneficios ul { columns: 1; }
         }
+
+        /* Media query para móvil en horizontal */
+        @media (max-width: 992px) and (orientation: landscape) {
+            .ai-chat-window {
+                width: 60vw;
+                height: 80vh;
+                max-height: 400px; 
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
         @media (max-width: 768px) {
             .main-header .container { flex-wrap: nowrap; }
             .header-right { gap: 15px; }
@@ -365,6 +508,17 @@
             .cta-button { padding: 12px 25px; font-size: 0.9rem; }
             .contact-methods { flex-direction: column; gap: 30px; }
             .cookie-consent-banner { flex-direction: column; text-align: center; left: 15px; right: 90px; bottom: 20px; width: auto; }
+            
+            /* Ajustes del chat para móviles pequeños */
+            .ai-chat-window {
+                right: 10px;
+                bottom: 80px;
+                width: calc(100vw - 20px);
+            }
+            .ai-assistant-bubble {
+                right: 10px;
+                bottom: 10px;
+            }
         }
         @media (prefers-reduced-motion: reduce) {
           html { scroll-behavior: auto; }
@@ -664,23 +818,23 @@
         </div>
     </footer>
 
-    <div id="ai-assistant-bubble" class="ai-assistant-bubble">
+    <div id="ai-assistant-bubble" class="ai-assistant-bubble" role="button" aria-label="Abrir chat con asistente virtual">
         <img src="images/assistant-avatar.webp" alt="Asistente de IA Ana">
     </div>
 
-    <div id="ai-chat-window" class="ai-chat-window">
+    <div id="ai-chat-window" class="ai-chat-window" role="dialog" aria-modal="true" aria-labelledby="chat-header-title">
         <div class="chat-header">
-            <h3 data-translate-key="assistantName"></h3>
-            <button id="close-chat-btn" class="close-chat-btn">&times;</button>
+            <h3 id="chat-header-title" data-translate-key="assistantName"></h3>
+            <button id="close-chat-btn" class="close-chat-btn" aria-label="Cerrar chat">&times;</button>
         </div>
         <div id="chat-body" class="chat-body"></div>
         <div class="chat-footer">
-            <input type="text" id="chat-input" data-translate-key="assistantPlaceholder">
-            <button id="send-chat-btn"><i class="fas fa-paper-plane"></i></button>
+            <input type="text" id="chat-input" data-translate-key="assistantPlaceholder" aria-label="Escribe tu mensaje aquí">
+            <button id="send-chat-btn" aria-label="Enviar mensaje"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
-    <div id="cookie-consent-banner" class="cookie-consent-banner">
+    <div id="cookie-consent-banner" class="cookie-consent-banner" role="region" aria-label="Aviso de cookies">
         <p data-translate-key="cookieText"></p>
         <button id="accept-cookies" class="cta-button" data-translate-key="cookieAccept"></button>
     </div>
@@ -716,6 +870,7 @@
                 footerBrandName: "Repfinity", footerPhone: "Teléfono: +19412786320", footerPrivacy: "Política de Privacidad", footerTerms: "Términos de Uso", footerCopyright: `© ${new Date().getFullYear()} Repfinity. Todos los derechos reservados.`,
                 cookieText: 'Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra <a href="#privacy-policy">política de privacidad</a>.', cookieAccept: "Aceptar",
                 assistantName: "Asistente Virtual Ana", assistantPlaceholder: "Escribe tu pregunta...",
+                assistantTyping: "Ana está escribiendo...",
                 lastUpdated: "Última actualización:",
                 privacyTitle: "Política de Privacidad",
                 privacySection1Title: "1. Introducción", privacySection1Text: "Bienvenido a Repfinity. Valoramos tu privacidad y nos comprometemos a proteger tu información personal. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y protegemos tu información cuando visitas nuestro sitio web y utilizas nuestros servicios (la \"Herramienta Repfinity\" y el servicio de \"Página Web Profesional\").",
@@ -809,6 +964,7 @@
                 footerBrandName: "Repfinity", footerPhone: "Phone: +19412786320", footerPrivacy: "Privacy Policy", footerTerms: "Terms of Use", footerCopyright: `© ${new Date().getFullYear()} Repfinity. All rights reserved.`,
                 cookieText: 'We use cookies to enhance your experience. By continuing, you agree to our <a href="#privacy-policy">privacy policy</a>.', cookieAccept: "Accept",
                 assistantName: "Virtual Assistant Ana", assistantPlaceholder: "Type your question...",
+                assistantTyping: "Ana is typing...",
                 lastUpdated: "Last updated:",
                 privacyTitle: "Privacy Policy",
                 privacySection1Title: "1. Introduction", privacySection1Text: "Welcome to Repfinity. We value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services (the \"Repfinity Tool\" and the \"Professional Website\" service).",
@@ -902,6 +1058,7 @@
                 footerBrandName: "Repfinity", footerPhone: "Telefone: +19412786320", footerPrivacy: "Política de Privacidade", footerTerms: "Termos de Uso", footerCopyright: `© ${new Date().getFullYear()} Repfinity. Todos os direitos reservados.`,
                 cookieText: 'Usamos cookies para mejorar sua experiência. Ao continuar, você concorda com nossa <a href="#privacy-policy">política de privacidade</a>.', cookieAccept: "Aceitar",
                 assistantName: "Assistente Virtual Ana", assistantPlaceholder: "Digite sua pergunta...",
+                assistantTyping: "Ana está escrevendo...",
                 lastUpdated: "Última atualização:",
                 privacyTitle: "Política de Privacidade",
                 privacySection1Title: "1. Introdução", privacySection1Text: "Bem-vindo à Repfinity. Valorizamos sua privacidade e estamos empenhados em proteger suas informações pessoais. Esta Política de Privacidade explica como coletamos, usamos, divulgamos e protegemos suas informações quando você visita nosso site e utiliza nossos serviços (a \"Ferramenta Repfinity\" e o serviço de \"Site Profissional\").",
@@ -977,7 +1134,7 @@
                 const key = el.getAttribute('data-translate-key');
                 if (translations[currentLang][key]) {
                     const value = translations[currentLang][key];
-                    if (el.placeholder && el.tagName === 'INPUT') {
+                    if (el.placeholder && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA')) {
                         el.placeholder = value;
                     } else {
                         el.innerHTML = value;
@@ -1031,12 +1188,8 @@
             });
             if(lightbox) lightbox.addEventListener('click', (e) => { if(e.target === lightbox || e.target.classList.contains('lightbox-close')) lightbox.style.display = 'none'; });
 
-            const assistantBubble = document.getElementById('ai-assistant-bubble');
-            const chatWindow = document.getElementById('ai-chat-window');
-            const closeChatBtn = document.getElementById('close-chat-btn');
-            if(assistantBubble) assistantBubble.addEventListener('click', () => chatWindow.classList.toggle('show'));
-            if(closeChatBtn) closeChatBtn.addEventListener('click', () => chatWindow.classList.remove('show'));
-
+            // NOTE: Chat functionality moved to its own script block for clarity and correctness.
+            
             const cookieBanner = document.getElementById('cookie-consent-banner');
             const acceptCookiesBtn = document.getElementById('accept-cookies');
             if (!localStorage.getItem('cookiesAccepted')) {
@@ -1062,6 +1215,125 @@
                     });
                 });
             }
+        });
+    </script>
+
+    <!-- SCRIPT DEL CHAT CORREGIDO Y FUNCIONAL -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const assistantBubble = document.getElementById('ai-assistant-bubble');
+            const chatWindow = document.getElementById('ai-chat-window');
+            const closeChatBtn = document.getElementById('close-chat-btn');
+            const chatBody = document.getElementById('chat-body');
+            const chatInput = document.getElementById('chat-input');
+            const sendChatBtn = document.getElementById('send-chat-btn');
+
+            let chatHistory = [];
+            let isAssistantTyping = false;
+
+            // Función para abrir y cerrar el chat
+            const toggleChatWindow = () => {
+                chatWindow.classList.toggle('show');
+                if (chatWindow.classList.contains('show')) {
+                    chatInput.focus();
+                }
+            };
+
+            if(assistantBubble) assistantBubble.addEventListener('click', toggleChatWindow);
+            if(closeChatBtn) closeChatBtn.addEventListener('click', toggleChatWindow);
+
+            // Función para añadir mensajes al cuerpo del chat
+            const addMessageToChat = (sender, message) => {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('chat-message', sender);
+                messageElement.textContent = message;
+                chatBody.appendChild(messageElement);
+                chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll
+            };
+            
+            // Función para mostrar el indicador de "escribiendo..."
+            const showTypingIndicator = () => {
+                const currentLang = localStorage.getItem('repfinityLang') || 'es';
+                const typingText = translations[currentLang]?.assistantTyping || "Ana is typing...";
+                const typingElement = document.createElement('div');
+                typingElement.classList.add('chat-message', 'assistant', 'typing');
+                typingElement.id = 'typing-indicator';
+                typingElement.textContent = typingText;
+                chatBody.appendChild(typingElement);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            };
+
+            // Función para remover el indicador de "escribiendo..."
+            const removeTypingIndicator = () => {
+                const typingIndicator = document.getElementById('typing-indicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+            };
+
+            // Función principal para enviar el mensaje
+            const handleSendMessage = async () => {
+                const userInput = chatInput.value.trim();
+                if (!userInput || isAssistantTyping) return;
+
+                // Deshabilitar input y botón mientras se procesa
+                isAssistantTyping = true;
+                chatInput.disabled = true;
+                sendChatBtn.disabled = true;
+
+                // Añadir mensaje del usuario al historial y a la UI
+                addMessageToChat('user', userInput);
+                chatHistory.push({ role: 'user', content: userInput });
+                chatInput.value = '';
+
+                // Mostrar que el asistente está escribiendo
+                showTypingIndicator();
+
+                try {
+                    // Llamada a la Netlify Function (API)
+                    const response = await fetch('/.netlify/functions/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ history: chatHistory }),
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    const assistantMessage = data.message;
+
+                    // Añadir respuesta del asistente al historial
+                    chatHistory.push({ role: 'assistant', content: assistantMessage });
+
+                    // Quitar "escribiendo..." y mostrar respuesta
+                    removeTypingIndicator();
+                    addMessageToChat('assistant', assistantMessage);
+
+                } catch (error) {
+                    console.error("Error al contactar al asistente:", error);
+                    removeTypingIndicator();
+                    addMessageToChat('assistant', 'Lo siento, estoy teniendo problemas para conectar. Por favor, intenta de nuevo más tarde.');
+                } finally {
+                    // Rehabilitar input y botón
+                    isAssistantTyping = false;
+                    chatInput.disabled = false;
+                    sendChatBtn.disabled = false;
+                    chatInput.focus();
+                }
+            };
+
+            // Event Listeners para enviar
+            if(sendChatBtn) sendChatBtn.addEventListener('click', handleSendMessage);
+            if(chatInput) chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault(); // Prevenir salto de línea
+                    handleSendMessage();
+                }
+            });
         });
     </script>
 </body>
