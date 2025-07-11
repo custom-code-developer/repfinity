@@ -59,7 +59,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         :root {
@@ -284,7 +284,6 @@
         .lightbox-close { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; }
         .lightbox-close:hover, .lightbox-close:focus { color: #bbb; text-decoration: none; }
         
-        /* --- ESTILOS CORREGIDOS Y OPTIMIZADOS PARA EL CHAT --- */
         .ai-assistant-bubble {
             position: fixed;
             bottom: 20px;
@@ -429,15 +428,12 @@
             cursor: not-allowed;
         }
 
-        /* --- FIN DE ESTILOS CORREGIDOS --- */
-
         @media (max-width: 992px) {
             h1 { font-size: 2.2rem; }
             h2, .section-title { font-size: 1.8rem; }
             #beneficios ul { columns: 1; }
         }
 
-        /* Media query para móvil en horizontal */
         @media (max-width: 992px) and (orientation: landscape) {
             .ai-chat-window {
                 width: 60vw;
@@ -483,7 +479,7 @@
                 cursor: pointer;
                 padding: 0;
                 z-index: 10;
-                order: 2;
+                order: 2; /* Ensures hamburger is to the right */
             }
             #mobile-menu-toggle .bar {
                 width: 100%;
@@ -492,7 +488,9 @@
                 border-radius: 2px;
                 transition: all 0.3s ease-in-out;
             }
-            .language-switcher { order: 1; }
+            .language-switcher { 
+                order: 1; /* Ensures language switcher is to the left */
+            }
             .hero { padding: 80px 0 60px; }
             h1 { font-size: 2rem; }
             section { padding: 50px 0; }
@@ -509,7 +507,6 @@
             .contact-methods { flex-direction: column; gap: 30px; }
             .cookie-consent-banner { flex-direction: column; text-align: center; left: 15px; right: 90px; bottom: 20px; width: auto; }
             
-            /* Ajustes del chat para móviles pequeños */
             .ai-chat-window {
                 right: 10px;
                 bottom: 80px;
@@ -935,6 +932,100 @@
                 termsSection10Title: "10. Cambios a los Términos", termsSection10Text: "Nos reservamos el derecho de modificar estos Términos en cualquier momento. Publicaremos los cambios en esta página y actualizaremos la fecha de \"Última actualización\". El uso continuado de los servicios después de los cambios constituye tu aceptación de los nuevos términos.",
                 termsSection11Title: "11. Contáctanos", termsSection11Text: "Si tienes preguntas sobre estos Términos de Uso, por favor contáctanos en: <a href=\"mailto:sales@repfinity.app\">sales@repfinity.app</a>.",
             },
+            en: {
+                navServices: "Services", navBenefits: "Benefits", navPortfolio: "Portfolio", navGuides: "Guides", navPricing: "Plans", navContact: "Contact",
+                heroTitle: "Improve Your Online Reputation and Connect Better with Your Customers", heroSubtitle: "The smart solution designed for business owners like you. Manage feedback effectively and boost your image on Google.", heroCTA: "View Plans",
+                servicesTitle: "The Power of Reviews, Simplified", servicesDesc: "In today's digital world, every review counts. Repfinity gives you back control.",
+                howItWorksTitle: "A Seamless Experience for Your Customers and for You:", step1Title: "Quick Rating", step1Desc: "Your customers rate their experience simply and intuitively.", step2Title: "Direct Feedback", step2Desc: "Constructive opinions come directly to you to act on and improve.", step3Title: "Positive Boost", step3Desc: "We make it easy for satisfied customers to share their positive experience where it matters most.",
+                compareServicesLink: "Not sure? Compare our services →",
+                benefitsTitle: "Direct Benefits for Your Business", benefit1: "<strong>Improve Your Score:</strong> Encourage positive reviews and proactively manage negative ones.", benefit2: "<strong>Valuable Feedback:</strong> Get direct insights from your customers to improve.", benefit3: "<strong>Save Time:</strong> Simplify the process of requesting and managing reviews.", benefit4: "<strong>Professional Image:</strong> Show your customers that you value their opinion and strive for excellence.", benefit5: "<strong>Direct Connection:</strong> Open a private channel to resolve concerns before they go public.", benefit6: "<strong>Easy Implementation:</strong> We take care of everything so you can get started quickly.",
+                testimonialsTitle: "Success Stories with Repfinity",
+                testimonial1Quote: '"I was overwhelmed with some unfair reviews and had no time to ask for good ones. Repfinity changed the game: now I see negative feedback first to resolve it, and my score has gone up a lot. A total relief!"', testimonial1ClientName: "Sophia Ramirez", testimonial1ClientDesc: 'Owner of "The Coffee Corner"',
+                testimonial2Quote: '"We do good work, but we were invisible online. The website Repfinity built for us gave us the professional image we needed—instantly! And with the tool, we started collecting positive reviews that were previously lost. The perfect combination."', testimonial2ClientName: "Carlos Vega", testimonial2ClientDesc: 'Owner of "ServiTec Solutions"',
+                testimonial3Quote: '"My shop thrives on personalized service. Repfinity helped reflect that great experience online. I capture feedback easily and can invite the happiest customers to leave a review. Essential for competing today!"', testimonial3ClientName: "Elena Navarro", testimonial3ClientDesc: 'Manager of "Unique Details"',
+                portfolioTitle: "Real Results for Businesses Like Yours", portfolioSubtitle: "We show you the quality and professionalism of our work. Each site is designed to be fast, secure, and effective.", portfolioWebsitesTitle: "Professional Websites", portfolioToolTitle: "Our Tool in Action",
+                web24hTitle: "Need a Professional Online Presence?", web24hSubtitle: "We Create Your Professional Website", web24hDesc: "We deliver an effective and professional online presence. We develop your website 100% with clean code (HTML, CSS, JS) for maximum speed and security, mobile-responsive, and with basic technical SEO. Ideal for businesses looking to start fast and stand out. Typical delivery in 5-7 business days.", web24hCTA: "View Plan and Price",
+                webServiceWhatsIncludedTitle: "This service includes:", webServiceIncludeDomainHosting: "Standard generic domain and web hosting for the first year.", webServiceIncludeSections: "Professional design with essential sections (e.g., Home, Services, Contact).", webServiceIncludeRevision: "One round of minor adjustments post-delivery to polish details.", webServiceIncludeFlexFAQ: "Flexibility to add sections like 'About Us' or 'FAQ' (if you provide the initial content).",
+                pricingTitle: "Choose the Ideal Plan for You",
+                plan1Title: "Repfinity Tool", plan2Title: "Professional Website",
+                planAnnualTitle: "Annual Plan", planAnnualPeriod: "One-time annual payment", planAnnualCTA: "Sign Up for Annual Plan",
+                planIncludesTitle: "What's included:",
+                plan1Includes: "Full access to the reputation and feedback management platform.",
+                plan2Includes: "Professional website + Annual hosting + Standard generic domain included.",
+                aiAddon: '✨ <strong>Optional Add-on:</strong> Add a <strong>24/7 Virtual Assistant</strong> to your website. It answers questions and guides your customers to purchase, even while you sleep. Ask about this advanced feature.',
+                compareCTA: "See detailed comparative analysis →",
+                pricingNote: '<strong>Note:</strong> All prices are in USD. Hotmart, our payment processor, will handle the conversion to your local currency.',
+                hotmartGuaranteeNote: "Secure purchase through Hotmart, with a 7-day money-back guarantee.",
+                paymentInfo: '🌍 <strong>International or Argentine Customer?</strong> We offer flexible payment options to save on fees, including transfers and local methods. <a href="https://wa.me/19412786320" target="_blank" rel="noopener noreferrer">Contact us on WhatsApp</a> for personalized assistance.',
+                contactTitle: "Ready to Boost Your Business?", contactSubtitle: "Let's talk. Contact us for a demo or to answer any questions.", contactWhatsAppTitle: "Direct WhatsApp", contactWhatsAppCTA: "Start Chat", contactEmailTitle: "Email",
+                footerBrandName: "Repfinity", footerPhone: "Phone: +19412786320", footerPrivacy: "Privacy Policy", footerTerms: "Terms of Use", footerCopyright: `© ${new Date().getFullYear()} Repfinity. All rights reserved.`,
+                cookieText: 'We use cookies to enhance your experience. By continuing, you agree to our <a href="#privacy-policy">privacy policy</a>.', cookieAccept: "Accept",
+                assistantName: "Virtual Assistant Ana", assistantPlaceholder: "Type your question...",
+                assistantTyping: "Ana is typing...",
+                lastUpdated: "Last updated:",
+                privacyTitle: "Privacy Policy",
+                privacySection1Title: "1. Introduction", privacySection1Text: "Welcome to Repfinity. We value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services (the \"Repfinity Tool\" and the \"Professional Website\" service).",
+                privacySection2Title: "2. Information We Collect", privacySection2Text1: "We may collect information about you in a variety of ways:",
+                privacySection2Item1: "<strong>Personally Identifiable Information:</strong> Name, email address, phone number, company name, payment information (processed through Hotmart), and any other information you voluntarily provide to us when you register, make a purchase, or contact us.",
+                privacySection2Item2: "<strong>Derivative Data:</strong> Information our servers automatically collect when you access the Site, such as your IP address, browser type, operating system, access times, and the pages you have viewed directly before and after accessing the Site.",
+                privacySection2Item3: "<strong>Repfinity Tool Data:</strong> The Repfinity Tool facilitates customer feedback management. During this process, Repfinity does not collect or store the opinions, email addresses, or any personal data of the customers of the businesses using the tool. The contracting business is the sole recipient and manager of the private feedback.",
+                privacySection3Title: "3. Use of Your Information", privacySection3Text1: "We use the information we collect to:",
+                privacySection3Item1: "Create and manage your account.",
+                privacySection3Item2: "Process your payments and deliver the requested services (Repfinity Tool, Professional Website).",
+                privacySection3Item3: "Send you administrative emails, such as confirmation, technical updates, and security alerts.",
+                privacySection3Item4: "Respond to your comments and questions and provide customer support.",
+                privacySection3Item5: "Analyze website usage to improve our services and user experience.",
+                privacySection3Item6: "Prevent fraudulent activities and protect the security of our platform.",
+                privacySection3Item7: "<strong>No Sale of Data:</strong> Repfinity does not sell, rent, or otherwise trade your personal information or any data that may be channeled through the Repfinity Tool to third parties.",
+                privacySection4Title: "4. Disclosure of Your Information", privacySection4Text1: "We will not share your personal information with third parties except in the following situations:",
+                privacySection4Item1: "<strong>Payment Processors:</strong> We share information with Hotmart to process your payments. Their use of your personal information is governed by their privacy policy.",
+                privacySection4Item2: "<strong>Legal Obligations:</strong> If required by law or to respond to valid legal processes.",
+                privacySection4Item3: "<strong>Protection of Rights:</strong> To protect our rights, privacy, safety, or property, and/or that of our affiliates, you, or others.",
+                privacySection4Item4: "<strong>Service Providers:</strong> We may share information with third-party vendors who perform services for us (e.g., web hosting), under confidentiality agreements.",
+                privacySection5Title: "5. Security of Your Information", privacySection5Text: "We use administrative, technical, and physical security measures to help protect your personal information. However, no security system is impenetrable, and we cannot guarantee the absolute security of your information.",
+                privacySection6Title: "6. Cookies and Tracking Technologies", privacySection6Text: "We may use cookies and similar tracking technologies to collect information about your Browse on our site and to remember your preferences (like language). You can control the use of cookies at the individual browser level.",
+                privacySection7Title: "7. Your Privacy Rights", privacySection7Text: "Depending on your location, you may have certain rights regarding your personal information, such as the right to access, correct, or delete your data. Contact us using the information below to exercise your rights.",
+                privacySection8Title: "8. Children's Privacy", privacySection8Text: "Our services are not directed to children under the age of 13 (or the minimum required age in your jurisdiction), and we do not knowingly collect personal information from children.",
+                privacySection9Title: "9. Changes to this Policy", privacySection9Text: "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Policy on this page and updating the \"Last updated\" date.",
+                privacySection10Title: "10. Contact Us", privacySection10Text: "If you have questions or comments about this Privacy Policy, please contact us at: <a href=\"mailto:sales@repfinity.app\">sales@repfinity.app</a>.",
+
+                termsTitle: "Terms of Use",
+                termsSection1Title: "1. Acceptance of Terms", termsSection1Text: "By accessing and using the Repfinity website and contracting our services (the \"Repfinity Tool\" and/or the \"Professional Website\" service), you agree to comply with and be bound by these Terms of Use. If you do not agree to these terms, you should not use our services.",
+                termsSection2Title: "2. Description of Services", termsSection2Text: "Repfinity offers:",
+                termsSection2Item1: "<strong>Repfinity Tool:</strong> A platform designed to help businesses manage their online reputation by facilitating the collection of customer feedback and the management of reviews.",
+                termsSection2Item2: "<strong>Professional Website:</strong> A service for the rapid creation of professional websites for businesses, which includes basic annual hosting.",
+                termsSection3Title: "3. Payments and Plans",
+                termsSection3Item1: "Services are offered under annual subscription plans as detailed in the Pricing section.",
+                termsSection3Item2: "Payments are processed through our third-party partner, Hotmart. By making a purchase, you agree to Hotmart's terms and privacy policy.",
+                termsSection3Item3: "Prices are shown in USD for reference. The final charge will be in your local currency according to Hotmart's conversion and availability in your country.",
+                termsSection3Item4: "Subscriptions are prepaid for the selected annual period. Refunds within the first seven (7) days of the initial purchase are governed by the guarantee policy of our payment processor, Hotmart, as stated in our Pricing section. After this initial 7-day guarantee period, or for subscription renewals, payments are generally non-refundable, unless required by applicable law or otherwise specified by Repfinity.",
+                termsSection4Title: "4. User Responsibilities",
+                termsSection4Item1: "You are responsible for providing accurate and up-to-date information when registering for and using our services.",
+                termsSection4Item2: "You agree to use the Repfinity Tool and website ethically and lawfully, without infringing on third-party rights or engaging in malicious activities.",
+                termsSection4Item3: "If you use the Repfinity Tool to contact your customers, you are solely responsible for complying with applicable privacy and consent laws (e.g., GDPR, LGPD, CAN-SPAM) for the collection and use of your customers' data.",
+                termsSection4Item4: "For the Professional Website service, you are responsible for providing the necessary content (text, specific images, logo) in a timely manner to meet the delivery deadline.",
+                termsSection4SubTitle1: "License Scope and Restrictions (Repfinity Tool):",
+                termsSection4SubItem1: "Each Repfinity Tool license is valid and authorized for use in connection with one (1) single physical business location of the contracting party, the address of which must be declared at the time of purchase/subscription.",
+                termsSection4SubItem2: "Repfinity reserves the right, and the user consents, to verify the location of license use, and may cross-reference data with the business's public information on platforms like Google Maps / Google Business Profile.",
+                termsSection4SubItem3: "The use of a single license to manage the online reputation of multiple branches, franchises, or different physical locations, either simultaneously or alternately, is strictly prohibited. Each physical location requires its own license.",
+                termsSection4SubItem4: "<strong>Exception for Mobile Services:</strong> This single-location limitation does not strictly apply to independent professionals or companies whose primary business model involves providing services directly at various customer locations (e.g., plumbers, electricians, in-home consultants, cleaning services), provided they do not operate from multiple fixed physical locations for public service and the administrative/digital management of the tool is centralized.",
+                termsSection4SubItem5: "<strong>Breach and Consequences:</strong> The violation of these license restrictions, detected by any means, will be considered a serious breach of these Terms of Use. Repfinity will be entitled to immediately suspend the infringing user's access to the Repfinity Tool without prior notice, and the user will not be entitled to claim any refund for the paid and unused subscription period.",
+                termsSection5Title: "5. Intellectual Property", termsSection5Text: "The website, the Repfinity Tool, its design, source code, methodologies, and all content created by Repfinity are the exclusive property of Repfinity and are protected by intellectual property laws. You may not copy, modify, distribute, or reverse-engineer our services without our explicit written permission.",
+                termsSection6Title: "6. Professional Website Service Specifications",
+                termsSection6Item1: "The \"Professional Website\" service consists of the development of a custom website using HTML, CSS, and JavaScript, personalized with your content and logo. We start from efficient code architectures to ensure agile delivery. The delivery timeframe begins upon our complete receipt of all necessary materials from you.",
+                termsSection6Item2: "The \"Professional Website\" service includes the hosting and technical maintenance necessary for the website's operation during an active Repfinity subscription. The continuity of the website service, including its online visibility and functionalities, is subject to the timely payment of the corresponding annual subscription. If the subscription is not renewed, the website will become inaccessible and non-functional.",
+                termsSection6Item3: "The \"Professional Website\" service focuses on the structure and functionality of the site as described. It does not include the creation of original content by Repfinity (such as extensive copywriting, professional photography, or advanced specific graphic design) beyond the integration of the content provided by the client and the design elements agreed upon for the site.",
+                termsSection6Item4: "<strong>Domain Registration and Use:</strong> If a standard generic domain is included with the \"Professional Website\" plan, Repfinity will be the registrant and will manage its technical configuration while the service subscription is active. The use of this domain is conditioned on the service provided by Repfinity. Upon termination and non-renewal of the subscription, Repfinity will cease management of said domain for the client (and may allow the domain to expire or reassign it at its discretion), and no transfers of the domain will be made. The client is free to attempt to register that domain name on their own with another provider if it later becomes available.",
+                termsSection6SubTitle1: "Access to and Copying of Website Content", termsSection6SubText1: "It is the client's responsibility to make a manual copy of the textual and graphical content they have provided or approved for their website before the expiration date of their active \"Professional Website\" service subscription. Repfinity recommends making this copy at least seven (7) days before expiration. During the term of their subscription, the client can observe the visual structure of the site. Once the subscription expires and is not renewed, the associated website will immediately become non-functional and publicly inaccessible. Repfinity does not provide site files for export (such as source code or databases) nor does it offer technical assistance for migrating the site or its content to another provider.",
+                termsSection7Title: "7. Disclaimer and Limitation of Liability",
+                termsSection7Item1: "The services are provided \"as is\" and \"as available.\" We do not guarantee specific results, such as a guaranteed increase in review scores or a specific number of new customers.",
+                termsSection7Item2: "Repfinity will not be liable for any indirect, incidental, special, or consequential damages arising from the use or inability to use our services.",
+                termsSection7Item3: "Our total liability, in any case, will be limited to the amount you have paid for the services during the last six (6) months prior to the event giving rise to the claim.",
+                termsSection8Title: "8. Termination", termsSection8Text: "We may suspend or terminate your access to the services if you breach these Terms of Use. You may stop using the services at any time, but no refunds will be issued for unused periods.",
+                termsSection9Title: "9. Governing Law", termsSection9Text: "These Terms shall be governed by and construed in accordance with the laws of the Republic of Argentina, without giving effect to any principles of conflicts of law.",
+                termsSection10Title: "10. Changes to Terms", termsSection10Text: "We reserve the right to modify these Terms at any time. We will post the changes on this page and update the \"Last updated\" date. Your continued use of the services after the changes constitutes your acceptance of the new terms.",
+                termsSection11Title: "11. Contact Us", termsSection11Text: "If you have questions about these Terms of Use, please contact us at: <a href=\"mailto:sales@repfinity.app\">sales@repfinity.app</a>.",
+            },
             pt: {
                 navServices: "Serviços", navBenefits: "Benefícios", navPortfolio: "Portfólio", navGuides: "Guias", navPricing: "Planos", navContact: "Contato",
                 heroTitle: "Melhore Sua Reputação Online e Conecte-se Melhor com Seus Clientes", heroSubtitle: "A solução inteligente para donos de negócios como você. Gerencie o feedback de forma eficaz e potencialize sua imagem no Google.", heroCTA: "Ver Planos",
@@ -1021,7 +1112,7 @@
                 termsSection6Item4: "<strong>Registro e Uso do Domínio:</strong> Se um domínio genérico padrão for incluído no plano \"Site Profissional\", a Repfinity será a registrante e gerenciará sua configuração técnica enquanto a assinatura do serviço estiver ativa. O uso deste domínio está condicionado ao serviço fornecido pela Repfinity. Ao término e não renovação da assinatura, a Repfinity cessará o gerenciamento de tal domínio para o cliente (podendo permitir que o domínio expire ou o reatribuindo a seu critério), e não serão feitas transferências do domínio. O cliente é livre para tentar registrar esse nome de domínio por conta própria com outro provedor, se ele se tornar disponível posteriormente.",
                 termsSection6SubTitle1: "Acesso e Cópia do Conteúdo do Site", termsSection6SubText1: "É responsabilidade do cliente fazer uma cópia manual do conteúdo textual e gráfico que forneceu ou aprovou para seu site antes da data de expiração de sua assinatura ativa do serviço \"Site Profissional\". A Repfinity recomenda fazer esta cópia com pelo menos sete (7) dias de antecedência ao vencimento. Durante a vigência de sua assinatura, o cliente pode observar a estrutura visual do site. Uma vez que a assinatura expire e não seja renovada, o site associado se tornará imediatamente não funcional e publicamente inacessível. A Repfinity não fornece arquivos do site para exportação (como código-fonte ou bancos de dados) nem oferece assistência técnica para a migração do site ou de seu conteúdo para outro provedor.",
                 termsSection7Title: "7. Isenção de Responsabilidade e Limitação de Responsabilidade",
-                termsSection7Item1: "Os serviços são fornecidos \"como estão\" e \"conforme disponíveis\". Não garantimos resultados específicos, como um aumento garantizado nas pontuações de avaliação ou um número específico de novos clientes.",
+                termsSection7Item1: "Os services são fornecidos \"como estão\" e \"conforme disponíveis\". Não garantimos resultados específicos, como um aumento garantizado nas pontuações de avaliação ou um número específico de novos clientes.",
                 termsSection7Item2: "A Repfinity não será responsável por quaisquer danos indiretos, incidentais, especiais ou consequenciais decorrentes do uso ou da incapacidade de usar nossos serviços.",
                 termsSection7Item3: "Nossa responsabilidade total, em qualquer caso, será limitada ao valor que você pagou pelos serviços durante os últimos seis (6) meses anteriores ao evento que deu origem à reclamação.",
                 termsSection8Title: "8. Rescisão", termsSection8Text: "Podemos suspender ou rescindir seu acesso aos serviços se você violar estes Termos de Uso. Você pode parar de usar os serviços a qualquer momento, mas nenhum reembolso será emitido por períodos não utilizados.",
